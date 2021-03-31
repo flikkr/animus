@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>elektrik milk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT language=javascript>function checksize()  
+{ if (document.images[0].complete) {  window.resizeTo(document.images[0].
+width+60,document.images[0].height+200); window.focus();} 
+else { setTimeout('check()',250) } }
+</SCRIPT>
+<SCRIPT language="javascript">
+function shake(nb) {
+	var sens=-1;
+	var X=0; var Y=0; var dx; var dy
+	for (no=nb;no>1;no=no-0.1) {
+		dx=-X+sens*Math.round(no*Math.random());
+		dy=-Y+sens*Math.round(no*Math.random());
+		X=X+dx; Y=Y+dy;
+		top.moveBy(dx,dy);
+		sens=sens*(-1);
+	}
+	top.moveBy(-X,-Y);
+}
+</SCRIPT>
+</head>
+<BODY  bgcolor="#FFFFFF" background="images/thumbs/cloth000.gif" text="#000000" 
+ onload="shake(7)">
+onload='checksize()' leftMargin=0 topMargin=0 marginwidth=0 marginheight0> <img src="images/stock/arcelect.gif" width="307" height="332" class="shadows"> 
+<OBJECT height=18 width=18 classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+  <PARAM NAME="SRC" VALUE="sounds/thunder.swf">
+  <param name="SCALE" value="noborder">
+  <embed src="sounds/thunder.swf"  width="18" 
+height="18" scale="noborder"> </embed> </OBJECT>
+</body>
+</html>

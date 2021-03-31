@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>love love tears thunder light</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE type=text/css>
+BODY {
+scrollbar-face-color: FFFFF0;
+scrollbar-highlight-color: FFFFF0;
+scrollbar-3dlight-color: 3399FF;
+scrollbar-darkshadow-color: 0099FF;
+scrollbar-shadow-color: 3399FF;
+scrollbar-arrow-color: FA8072;
+scrollbar-track-color: FFFFF0;
+}
+	
+</STYLE>
+<script language="JavaScript" src="scripts/girls.js">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFF0" text="#000000" background="images/thumbs/blkwhite.gif">
+<div id="Layer2" style="position:absolute; width:99px; height:86px; z-index:2; left: 303px; top: 273px"><img src="images/thumbs/ivory.jpg" width="50" height="50" usemap="index.htm#Map" border="0"> 
+  <map name="Map"> 
+    <area shape="rect" coords="5,4,106,66" alt="      anima      " title="      anima      ">
+    
+  </map>
+  <a href="index.htm"><img src="images/thumbs/lightmultix.gif" width="12" height="12" border="0" alt="      cobea  ophira      "></a></div>
+<script language="JavaScript" src="scripts/snow.js">
+</script>
+<script type="text/javascript">
+
+/******************************************
+* Snow Effect Script- By Altan d.o.o. (http://www.altan.hr/snow/index.html)
+* Visit Dynamic Drive DHTML code library (http://www.dynamicdrive.com/) for full source code
+* Last updated Nov 9th, 05' by DD. This notice must stay intact for use
+******************************************/
+  function openwindow(){
+window.open("autumn_effect.htm","","width=350,height=500")
+}
+
+  //Configure below to change URL path to the snow image
+  var snowsrc="love.gif"
+  // Configure below to change number of snow to render
+  var no = 10;
+  // Configure whether snow should disappear after x seconds (0=never):
+  var hidesnowtime = 0;
+  // Configure how much snow should drop down before fading ("windowheight" or "pageheight")
+  var snowdistance = "pageheight";
+
+///////////Stop Config//////////////////////////////////
+
+  var ie4up = (document.all) ? 1 : 0;
+  var ns6up = (document.getElementById&&!document.all) ? 1 : 0;
+
+	function iecompattest(){
+	return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+	}
+
+  var dx, xp, yp;    // coordinate and position variables
+  var am, stx, sty;  // amplitude and step variables
+  var i, doc_width = 800, doc_height = 600; 
+  
+  if (ns6up) {
+    doc_width = self.innerWidth;
+    doc_height = self.innerHeight;
+  } else if (ie4up) {
+    doc_width = iecompattest().clientWidth;
+    doc_height = iecompattest().clientHeight;
+  }
+
+  dx = new Array();
+  xp = new Array();
+  yp = new Array();
+  am = new Array();
+  stx = new Array();
+  sty = new Array();
+  snowsrc=(snowsrc.indexOf("dynamicdrive.com")!=-1)? "snow.gif" : snowsrc
+  for (i = 0; i < no; ++ i) {  
+    dx[i] = 0;                        // set coordinate variables
+    xp[i] = Math.random()*(doc_width-50);  // set position variables
+    yp[i] = Math.random()*doc_height;
+    am[i] = Math.random()*20;         // set amplitude variables
+    stx[i] = 0.02 + Math.random()/10; // set step variables
+    sty[i] = 0.7 + Math.random();     // set step variables
+		if (ie4up||ns6up) {
+      if (i == 0) {
+        document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><a href=\"http://dynamicdrive.com\"><img src='"+snowsrc+"' border=\"0\"><\/a><\/div>");
+      } else {
+        document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><img src='"+snowsrc+"' border=\"0\"><\/div>");
+      }
+    }
+  }
+
+  function snowIE_NS6() {  // IE and NS6 main animation function
+    doc_width = ns6up?window.innerWidth-10 : iecompattest().clientWidth-10;
+		doc_height=(window.innerHeight && snowdistance=="windowheight")? window.innerHeight : (ie4up && snowdistance=="windowheight")?  iecompattest().clientHeight : (ie4up && !window.opera && snowdistance=="pageheight")? iecompattest().scrollHeight : iecompattest().offsetHeight;
+	if (snowdistance=="windowheight"){
+		doc_height = window.innerHeight || iecompattest().clientHeight
+	}
+	else{
+		doc_height = iecompattest().scrollHeight
+	}
+    for (i = 0; i < no; ++ i) {  // iterate for every dot
+      yp[i] += sty[i];
+      if (yp[i] > doc_height-50) {
+        xp[i] = Math.random()*(doc_width-am[i]-30);
+        yp[i] = 0;
+        stx[i] = 0.02 + Math.random()/10;
+        sty[i] = 0.7 + Math.random();
+      }
+      dx[i] += stx[i];
+      document.getElementById("dot"+i).style.top=yp[i]+"px";
+      document.getElementById("dot"+i).style.left=xp[i] + am[i]*Math.sin(dx[i])+"px";  
+    }
+    snowtimer=setTimeout("snowIE_NS6()", 10);
+  }
+
+	function hidesnow(){
+		if (window.snowtimer) clearTimeout(snowtimer)
+		for (i=0; i<no; i++) document.getElementById("dot"+i).style.visibility="hidden"
+	}
+		
+
+if (ie4up||ns6up){
+    snowIE_NS6();
+		if (hidesnowtime>0)
+		setTimeout("hidesnow()", hidesnowtime*1000)
+		}
+
+</script>
+<div id="Layer1" style="position:absolute; width:133px; height:132px; z-index:1; left: 409px; top: 246px"><a href="links.htm"><img src="images/thumbs/magnet.gif" width="139" height="139" border="0" alt="    opus incertum     "></a> 
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p> 
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="18" height="18">
+    <param name=movie value="sounds/thunder%5B1%5D.swf">
+    <param name=quality value=high>
+    <param name="SCALE" value="noborder">
+    <embed src="sounds/thunder%5B1%5D.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="18" height="18" scale="noborder"> 
+    </embed> </object>
+</p>
+</body>
+</html>

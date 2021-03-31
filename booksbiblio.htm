@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>biblio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" onload="ImageBook()">
+<script type="text/javascript">
+
+/***********************************************
+* Book Flip slideshow script- © Ger Versluis 2003
+* Permission granted to DynamicDrive.com to feature script
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+/********************************************************
+	Create a div with transparent place holder in your html	
+	<div id="Book" style="position:relative">
+		<img src="placeholder.gif" width="144" height="227">
+	</div>
+	width = 2*book image width +4 height = book image height+2
+
+	Insert onload in body tag
+		<body onload="ImageBook()">	
+*********************************************************/
+
+// 7 variables to control behavior
+	var Book_Image_Width=240;
+	var Book_Image_Height=325;
+	var Book_Border=true;
+	var Book_Border_Color="gray";
+	var Book_Speed=6
+	;
+	var Book_NextPage_Delay=800; //1 second=1000
+	var Book_Vertical_Turn=0;	
+
+// array to specify images and optional links. At least 4
+// If Link is not needed keep it ""
+
+	Book_Image_Sources=new Array(
+"	thbook0001.JPG	","	book121.JPG	",
+"	thbook001.JPG	","	book001.JPG	",
+"	thbook001a.JPG	","	book001.JPG	",
+"	thbook002.JPG	","	book002.JPG	",
+"	thbook003.JPG	","	book003.JPG	",
+"	thbook004.JPG	","	book004.JPG	",
+"	thbook005.JPG	","	book005.JPG	",
+"	thbook006.JPG	","	book006.JPG	",
+"	thbook007.JPG	","	book007.JPG	",
+"	thbook008.JPG	","	book008.JPG	",
+"	thbook009.JPG	","	book009.JPG	",
+"	thbook010.JPG	","	book010.JPG	",
+"	thbook011.JPG	","	book011.JPG	",
+"	thbook012.JPG	","	book012.JPG	",
+"	thbook013.JPG	","	book013.JPG	",
+"	thbook014.JPG	","	book014.JPG	",
+"	thbook015.JPG	","	book015.JPG	",
+"	thbook016.JPG	","	book016.JPG	",
+"	thbook017.JPG	","	book017.JPG	",
+"	thbook018.JPG	","	book018.JPG	",
+"	thbook019.JPG	","	book019.JPG	",
+"	thbook020.JPG	","	book020.JPG	",
+"	thbook021.JPG	","	book021.JPG	",
+"	thbook022.JPG	","	book022.JPG	",
+"	thbook023.JPG	","	book023.JPG	",
+"	thbook024.JPG	","	book024.JPG	",
+"	thbook025.JPG	","	book025.JPG	",
+"	thbook026.JPG	","	book026.JPG	",
+"	thbook027.JPG	","	book027.JPG	",
+"	thbook028.JPG	","	book028.JPG	",
+"	thbook029.JPG	","	book029.JPG	",
+"	thbook030.JPG	","	book030.JPG	",
+"	thbook031.JPG	","	book031.JPG	",
+"	thbook032.JPG	","	book032.JPG	",
+"	thbook033.JPG	","	book033.JPG	",
+"	thbook034.JPG	","	book034.JPG	",
+"	thbook035.JPG	","	book035.JPG	",
+"	thbook036.JPG	","	book036.JPG	",
+"	thbook037.JPG	","	book037.JPG	",
+"	thbook038.JPG	","	book038.JPG	",
+"	thbook039.JPG	","	book039.JPG	",
+"	thbook040.JPG	","	book040.JPG	",
+"	thbook041.JPG	","	book041.JPG	",
+"	thbook042.JPG	","	book042.JPG	",
+"	thbook043.JPG	","	book043.JPG	",
+"	thbook044.JPG	","	book044.JPG	",
+"	thbook045.JPG	","	book045.JPG	",
+"	thbook046.JPG	","	book046.JPG	",
+"	thbook047.JPG	","	book047.JPG	",
+"	thbook048.JPG	","	book048.JPG	",
+"	thbook049.JPG	","	book049.JPG	",
+"	thbook050.JPG	","	book050.JPG	",
+"	thbook051.JPG	","	book051.JPG	",
+"	thbook052.JPG	","	book052.JPG	",
+"	thbook053.JPG	","	book053.JPG	",
+"	thbook054.JPG	","	book054.JPG	",
+"	thbook055.JPG	","	book055.JPG	",
+"	thbook056.JPG	","	book056.JPG	",
+"	thbook057.JPG	","	book057.JPG	",
+"	thbook058.JPG	","	book058.JPG	",
+"	thbook059.JPG	","	book059.JPG	",
+"	thbook060.JPG	","	book060.JPG	",
+"	thbook061.JPG	","	book061.JPG	",
+"	thbook062.JPG	","	book062.JPG	",
+"	thbook063.JPG	","	book063.JPG	",
+"	thbook064.JPG	","	book064.JPG	",
+"	thbook065.JPG	","	book065.JPG	",
+"	thbook066.JPG	","	book066.JPG	",
+"	thbook067.JPG	","	book067.JPG	",
+"	thbook068.JPG	","	book068.JPG	",
+"	thbook069.JPG	","	book069.JPG	",
+"	thbook070.JPG	","	book070.JPG	",
+"	thbook071.JPG	","	book071.JPG	",
+"	thbook072.JPG	","	book072.JPG	",
+"	thbook073.JPG	","	book073.JPG	",
+"	thbook074.JPG	","	book074.JPG	",
+"	thbook075.JPG	","	book075.JPG	",
+"	thbook076.JPG	","	book076.JPG	",
+"	thbook077.JPG	","	book077.JPG	",
+"	thbook078.JPG	","	book078.JPG	",
+"	thbook079.JPG	","	book079.JPG	",
+"	thbook080.JPG	","	book080.JPG	",
+"	thbook081.JPG	","	book081.JPG	",
+"	thbook082.JPG	","	book082.JPG	",
+"	thbook083.JPG	","	book083.JPG	",
+"	thbook084.JPG	","	book084.JPG	",
+"	thbook085.JPG	","	book085.JPG	",
+"	thbook086.JPG	","	book086.JPG	",
+"	thbook087.JPG	","	book087.JPG	",
+"	thbook088.JPG	","	book088.JPG	",
+"	thbook089.JPG	","	book089.JPG	",
+"	thbook090.JPG	","	book090.JPG	",
+"	thbook091.JPG	","	book091.JPG	",
+"	thbook092.JPG	","	book092.JPG	",
+"	thbook093.JPG	","	book093.JPG	",
+"	thbook094.JPG	","	book094.JPG	",
+"	thbook095.JPG	","	book095.JPG	",
+"	thbook096.JPG	","	book096.JPG	",
+"	thbook097.JPG	","	book097.JPG	",
+"	thbook098.JPG	","	book098.JPG	",
+"	thbook099.JPG	","	book099.JPG	",
+"	thbook100.JPG	","	book100.JPG	",
+"	thbook101.JPG	","	book101.JPG	",
+"	thbook102.JPG	","	book102.JPG	",
+"	thbook103.JPG	","	book103.JPG	",
+"	thbook104.JPG	","	book104.JPG	",
+"	thbook105.JPG	","	book105.JPG	",
+"	thbook106.JPG	","	book106.JPG	",
+"	thbook107.JPG	","	book107.JPG	",
+"	thbook108.JPG	","	book108.JPG	",
+"	thbook109.JPG	","	book109.JPG	",
+"	thbook110.JPG	","	book110.JPG	",
+"	thbook111.JPG	","	book111.JPG	",
+"	thbook112.JPG	","	book112.JPG	",
+"	thbook113.JPG	","	book113.JPG	",
+"	thbook114.JPG	","	book114.JPG	",
+"	thbook115.JPG	","	book115.JPG	",
+"	thbook116.JPG	","	book116.JPG	",
+"	thbook117.JPG	","	book117.JPG	",
+"	thbook118.JPG	","	book118.JPG	",
+"	thbook119.JPG	","	book119.JPG	",
+"	thbook120.JPG	","	book120.JPG	",
+"	thbook121.JPG	","	book121.JPG	"
+		);
+
+/***************** DO NOT EDIT BELOW **********************************/
+	var B_LI,B_MI,B_RI,B_TI,B_Angle=0,B_CrImg=6,B_MaxW,B_Direction=1;
+	var B_MSz,B_Stppd=false;B_Pre_Img=new Array(Book_Image_Sources.length);
+
+	function ImageBook(){
+		if(document.getElementById){
+			for(i=0;i<Book_Image_Sources.length;i+=2){
+				B_Pre_Img[i]=new Image();B_Pre_Img[i].src=Book_Image_Sources[i]}
+			Book_Div=document.getElementById("Book");
+			B_LI=document.createElement("img");Book_Div.appendChild(B_LI);	
+			B_RI=document.createElement("img");Book_Div.appendChild(B_RI);
+			B_MI=document.createElement("img");Book_Div.appendChild(B_MI);	
+			B_LI.style.position=B_MI.style.position=B_RI.style.position="absolute";
+			B_LI.style.zIndex=B_RI.style.zIndex=0;B_MI.style.zIndex=1;
+			B_LI.style.top=(Book_Vertical_Turn?Book_Image_Height+1:0)+"px";
+			B_LI.style.left=0+"px";
+			B_MI.style.top=0+"px";
+			B_MI.style.left=(Book_Vertical_Turn?0:Book_Image_Width+1)+"px";
+			B_RI.style.top=0+"px";
+			B_RI.style.left=(Book_Vertical_Turn?0:Book_Image_Width+1)+"px";
+			B_LI.style.height=Book_Image_Height+"px";
+			B_MI.style.height=Book_Image_Height+"px";
+			B_RI.style.height=Book_Image_Height+"px";
+			B_LI.style.width=Book_Image_Width+"px";
+			B_MI.style.width=Book_Image_Width+"px";
+			B_RI.style.width=Book_Image_Width+"px";
+			if(Book_Border){
+				B_LI.style.borderStyle=B_MI.style.borderStyle=B_RI.style.borderStyle="solid";
+				B_LI.style.borderWidth=1+"px";
+				B_MI.style.borderWidth=1+"px";
+				B_RI.style.borderWidth=1+"px";
+				B_LI.style.borderColor=B_MI.style.borderColor=B_RI.style.borderColor=Book_Border_Color}
+			B_LI.src=B_Pre_Img[0].src;
+			B_LI.lnk=Book_Image_Sources[1];
+			B_MI.src=B_Pre_Img[2].src;
+			B_MI.lnk=Book_Image_Sources[3];
+			B_RI.src=B_Pre_Img[4].src;
+			B_RI.lnk=Book_Image_Sources[5];
+			B_LI.onclick=B_MI.onclick=B_RI.onclick=B_LdLnk;
+			B_LI.onmouseover=B_MI.onmouseover=B_RI.onmouseover=B_Stp;
+			B_LI.onmouseout=B_MI.onmouseout=B_RI.onmouseout=B_Rstrt;
+			BookImages()}}
+
+	function BookImages(){
+		if(!B_Stppd){
+			if(Book_Vertical_Turn){
+				B_MSz=Math.abs(Math.round(Math.cos(B_Angle)*Book_Image_Height));
+				MidOffset=!B_Direction?Book_Image_Height+1:Book_Image_Height-B_MSz;
+				B_MI.style.top=MidOffset+"px";
+				B_MI.style.height=B_MSz+"px"}
+			else{	B_MSz=Math.abs(Math.round(Math.cos(B_Angle)*Book_Image_Width));
+				MidOffset=B_Direction?Book_Image_Width+1:Book_Image_Width-B_MSz;
+				B_MI.style.left=MidOffset+"px";
+				B_MI.style.width=B_MSz+"px"}
+			B_Angle+=Book_Speed/720*Math.PI;
+			if(B_Angle>=Math.PI/2&&B_Direction){
+				B_Direction=0;
+				if(B_CrImg==Book_Image_Sources.length)B_CrImg=0;
+				B_MI.src=B_Pre_Img[B_CrImg].src;
+				B_MI.lnk=Book_Image_Sources[B_CrImg+1];
+				B_CrImg+=2}
+			if(B_Angle>=Math.PI){
+				B_Direction=1;
+				B_TI=B_LI;
+				B_LI=B_MI;
+				B_MI=B_TI;
+				if(Book_Vertical_Turn)B_MI.style.top=0+"px";
+				else B_MI.style.left=Book_Image_Width+1+"px";			
+				B_MI.src=B_RI.src;
+				B_MI.lnk=B_RI.lnk;
+
+				setTimeout("Book_Next_Delay()",Book_NextPage_Delay)}
+			else setTimeout("BookImages()",50)}
+		else setTimeout("BookImages()",50)}
+
+	function Book_Next_Delay(){
+			if(B_CrImg==Book_Image_Sources.length)B_CrImg=0;
+			B_RI.src=B_Pre_Img[B_CrImg].src;
+			B_RI.lnk=Book_Image_Sources[B_CrImg+1];
+			B_MI.style.zIndex=2;
+			B_LI.style.zIndex=1;
+			B_Angle=0;
+			B_CrImg+=2;
+		setTimeout("BookImages()",50)}
+
+	function B_LdLnk(){if(this.lnk)window.location.href=this.lnk}
+	function B_Stp(){B_Stppd=true;this.style.cursor=this.lnk?"pointer":"default"}
+	function B_Rstrt(){B_Stppd=false}
+</script>
+<div id="Book" style="position:relative; left: 310px; top: 30px;"> 
+  <div align="left"><img src="placeholder.gif" width="244" height="327"> </div>
+</div>
+
+<font color="#000000" size="-1">.......</font><img src="BAIRAVAa.JPG" width="217" height="291" border="0" usemap="#Map"> 
+<p> 
+  <map name="Map">
+    <area shape="rect" coords="-2,-128,341,294" href="dreamingvoices.htm" target="_blank" alt="  pa6nep  !">
+  </map>
+</p>
+</body>
+</html>

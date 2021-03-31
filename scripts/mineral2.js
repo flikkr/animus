@@ -1,0 +1,41 @@
+  <!-- Hide from old browsers
+  iArray=new Array(
+"images/front1/2vodun12.jpg",
+"images/front1/asbast05.JPG",
+"images/front1/asbast07.JPG",
+"images/front1/asbast17.JPG",
+"images/front1/coral1.JPG",
+"images/front1/coral6.JPG",
+"images/front1/coral7.JPG",
+"images/front1/costarica105.JPG",
+"images/front1/deity2.jpg",
+"images/front1/index2.jpg",
+"images/front1/javavase2.jpg",
+"images/front1/lapita.JPG",
+"images/front1/ligam.jpg",
+"images/front1/mali.jpg",
+"images/front1/menhir04.jpg",
+"images/front1/menhir06.jpg",
+"images/front1/menhir07.jpg",
+"images/front1/menhir07front.jpg",
+"images/front1/ngshell112.JPG",
+"images/front1/P1010009.jpg",
+"images/front1/P1010014.JPG",
+"images/front1/P1010018.JPG",
+"images/front1/Pic00005.jpg",
+"images/front1/shell9.JPG",
+"images/front1/shells2.jpg",
+"images/front1/singa b.jpg",
+"images/front1/sweet102.JPG",
+"images/front1/terracotta.jpg",
+"images/front1/vodon100.JPG",
+"images/front1/vodon101.JPG",
+"images/front1/vodon102.JPG",
+"images/front1/vodon108.JPG",
+"images/front1/vodon111.JPG",
+"images/front1/vodon114.JPG",
+"images/front1/voodoo1.JPG"
+);
+ ni=Math.floor(iArray.length*Math.random());
+  ni='<IMG SRC="'+ iArray[ni]+ '" BORDER=0>';
+// end hiding -->
